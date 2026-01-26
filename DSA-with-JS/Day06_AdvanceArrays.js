@@ -6,6 +6,10 @@
     4 Right rotation by k element
     5 Remove Duplicates from Sorted Array
     6 Merge two sorted arrays 
+    7 Merging two sorted arrays but storing the sorted array in first arr itself
+    8 Best Time to Buy and Sell Stock
+    9 Sorting colors
+    10 Maximum sub Array
 */
 
 // 1 Left rotation by 1 element
@@ -125,7 +129,7 @@ let arr  = [1,2,3,4,5]
 // console.log(arr);
 
 
-// Remove Duplicates from Sorted Array
+// 5 Remove Duplicates from Sorted Array (leetcode problem number: 26);
 
 // let nums = [0,0,0,1,1,2,2,3,3]
 // var RemoveDuplicates = function(nums){
@@ -140,11 +144,10 @@ let arr  = [1,2,3,4,5]
 // }
 // let k = RemoveDuplicates(nums)
 // console.log(k);
-// console.log(nums);
+// console.log(`After removing duplicates sorted array is:{nums}`);
 
 
 // 6 Merge two sorted arrays
-
 
 // let arr1 = [2,5,6];
 // let arr2 = [1,3,4,7];
@@ -172,30 +175,120 @@ let arr  = [1,2,3,4,5]
 //     k++;
 //     i++;
 // }
-// console.log(merge);
+// console.log(`Merged Array is:${merge}`);
 
-// Merging two sorted arrays but storing the sorted array in first arr itself ( leetcode question number: 88);
 
-let nums1 = [1,2,3,0,0,0];
-let nums2 = [2,5,6];
-m = 3;
-n = 3;
-let i = m - 1;
-let j = n - 1;
-let k = m + n -1;
-while( i >= 0 && j >= 0){
-    if( nums1[i] > nums2[j]){
-        nums1[k] = nums1[i]
-        i--;
-    }else{
-        nums1[k] = nums2[j];
-        j--;
+// 7 Merging two sorted arrays but storing the sorted array in first arr itself (leetcode problem number: 88);
+
+// let nums1 = [1,2,3,0,0,0];
+// let nums2 = [2,5,6];
+// m = 3;
+// n = 3;
+// let i = m - 1;
+// let j = n - 1;
+// let k = m + n -1;
+// while( i >= 0 && j >= 0){
+//     if( nums1[i] > nums2[j]){
+//         nums1[k] = nums1[i]
+//         i--;
+//     }else{
+//         nums1[k] = nums2[j];
+//         j--;
+//     }
+//     k--;
+// };
+// while (j >= 0) {
+// nums1[k] = nums2[j];
+// j--;
+// k--;
+// }
+// console.log(`Sorted Array is:${nums1}`);
+
+
+// 8 Best Time to Buy and Sell Stock (leetcode problem number: 121)
+
+// let prices = [7,1,5,3,6,4];
+// var MaxProfit=function(prices){
+//     let MaxProfit=0;
+//     let MinPrice = prices[0];
+//     for(let i = 1; i < prices.length; i++){
+//         if( prices[i] < MinPrice ){
+//             MinPrice = prices[i];
+//         }else{
+//             let Profit = prices[i] - MinPrice;
+//             MaxProfit = Math.max(MaxProfit,Profit)
+//         }
+//     }
+//     return MaxProfit;
+// }
+
+// let profit = MaxProfit(prices)
+// console.log(`Profit equal to: ${profit}`);
+
+
+// 9 Sorting colors (leetcode problem number:75 )
+
+let colors = [2,0,1];
+let i = j = 0;
+let k = colors.length - 1;
+while( i <= k){
+    if( colors[i] == 0 ){
+        let temp = colors[i];
+        colors[i] = colors[j];
+        colors[j] = temp;
+        i++;
+        j++;
+    }else if( colors[i] == 2 ){
+        let temp = colors[i];
+        colors[i] = colors[k];
+        colors[k] = temp;
+        k--
     }
-    k--;
-};
-while (j >= 0) {
-nums1[k] = nums2[j];
-j--;
-k--;
+    else{
+        i++
+    }
 }
-console.log(nums1);
+console.log(`Sorted color are: ${colors}`);
+
+
+// 10 Maximum sub Array (leetcode problem number:53)
+
+let Array = [-2,1,-3,4,-1,2,1,-5,4];
+var SubArray = function(Array){
+    let sum = 0;
+    let max = - Infinity;
+    for( let i = 0 ; i < Array.length ; i++){
+        sum += Array[i];
+        max = Math.max(max,sum)
+        if( sum < 0 ){
+            sum = 0;
+        }
+    }
+    return max
+}
+let arrays = SubArray(Array);
+console.log(`Maximum subArray sum is :${arrays}`);
+
+
+// 11 Majority element (leetcode problem number:169)
+
+let arrs = [2,2,1,1,1,2,2];
+
+var MajorityElement = function(arrs){
+    let ans = arrs[0];
+    count = 1;
+    for(let i = 1; i < arrs.length; i++){
+        if(count == 0){
+            ans = arrs[i];
+            count = 1;
+        }else if( ans == arrs[i] ){
+            count ++
+        }else{
+            count --
+        }
+    }
+    return ans
+}
+
+let a = MajorityElement(arrs)
+console.log(`Majority element in the array is: ${a}`);
