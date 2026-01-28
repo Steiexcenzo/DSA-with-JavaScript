@@ -12,6 +12,10 @@
     10 Maximum sub Array
     11 Majority element 
     12 Trapping rain water
+    13 Single Number (leetcode question number:136)
+    14 Pow(X,n) with out using built-in pow
+    15 Two sum (leetcode question number:1)
+    16 Plus one (leetcode question number:66)
 */
 
 // 1 Left rotation by 1 element
@@ -357,12 +361,52 @@ while(n > 0){
 
 console.log(result);
 
-let nums = [1,3,4,2,2];
-let e = 0
-while(e < nums.length){
-    if(nums[e] === nums[e+1]){
-        console.log(nums[e]);
-    }else{
-        e++
+
+// 15 Two sum (leetcode question number:1)
+
+// let nums = [2,7,11,15]
+// let ans = [];
+// target = 9
+// for(let i = 0 ; i < nums.length; i ++){
+//         for(let j = i+1 ; j < nums.length ; j++){
+//             if( nums[i]+nums[j]===target ){
+//                 ans = [i,j]
+//             }
+//         }
+//     }
+// console.log(ans);
+
+
+// 16 Plus one (leetcode question number:66)
+
+let digits = [4,3,2,1]
+
+var Singlesum = function(digits){
+    for(let i = digits.length-1;i >= 0; i--){
+        if(digits[i]<9){
+        digits[i]++;
+        return digits
+        }
+        digits[i] = 0
+    }
+    digits.unshift(1);
+    return digits;
+}
+let z = Singlesum(digits);
+console.log(z);
+
+
+// 17 Find First and Last Position of Element in Sorted Array (leetcode question number:34)
+
+let Numbers = [5,7,7,8,8,10];
+let target = 8;
+
+for(let i = 0; i < Numbers.length; i++){
+    for(let j = i + 1; j < Numbers.length; j++){
+        if(Numbers[i]+Numbers[j]===target){
+            console.log(Numbers[i],Numbers[j]);
+        }else{
+            console.log([-1,-1]);
+        }
     }
 }
